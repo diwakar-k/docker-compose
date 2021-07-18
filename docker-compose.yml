@@ -1,0 +1,16 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER: mmo
+      - POSTGRES_PASSWORD: mmoChallenge
+      - POSTGRES_DB: welcome_mmo
+    volumes:
+        - ./db/setup.sql:/docker-entrypoint-initdb.d/
+    ports:
+        - 5432:5432
