@@ -6,14 +6,17 @@ services:
     build: ./app
     ports: 
         - "3000:3000"
+    depends_on: 
+        - db
 
   db:
     image: postgres:latest
     restart: always
     environment:
-      - POSTGRES_USER: mmo
-      - POSTGRES_PASSWORD: mmoChallenge
-      - POSTGRES_DB: welcome_mmo
+      - MMO_DB_HOST= db
+      - MMO_DB_USER= mmo
+      - MMO_DB_PASSWORD= mmoChallenge
+      - MMO_DB= welcome_mmo
     volumes:
         - ./db/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     ports:
