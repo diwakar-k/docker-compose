@@ -1,4 +1,4 @@
- 'use strict';
+'use strict';
  /*
   * This code runs on Node v12.22.                                             *
   */

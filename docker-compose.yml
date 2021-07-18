@@ -2,12 +2,7 @@
 version: '3.1'
 
 services:
-  app:
-    build: ./app
-    ports: 
-        - "3000:3000"
-    depends_on: 
-        - db
+  
 
   db:
     image: postgres:latest
@@ -21,3 +16,13 @@ services:
         - ./db/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     ports:
         - 5432:5432  
+  app:
+    build:
+        context: .
+        dockerfile: ./app/dockerfile
+    image: node-app-demo
+    depends_on: 
+        - db
+volumes: 
+    db-config:
+    db-data:
