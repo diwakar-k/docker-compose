@@ -2,6 +2,10 @@
 version: '3.1'
 
 services:
+  app:
+    build: ./app
+    ports: 
+        - "3000:3000"
 
   db:
     image: postgres:latest
@@ -11,6 +15,6 @@ services:
       - POSTGRES_PASSWORD: mmoChallenge
       - POSTGRES_DB: welcome_mmo
     volumes:
-        - ./db/setup.sql:/docker-entrypoint-initdb.d/
+        - ./db/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     ports:
         - 5432:5432  
